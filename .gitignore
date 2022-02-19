@@ -144,3 +144,5 @@ mlflow.db
 minio_data/
 mlruns/
 tmp*
+*.csv
+*.geojson

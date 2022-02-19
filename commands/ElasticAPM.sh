@@ -1,1 +1,1 @@
-docker-compose -f docker-compose-monitoring.yaml up
+docker-compose -f ../docker-compose-monitoring.yaml up
