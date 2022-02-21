@@ -3,8 +3,8 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 
-INPUT_DATASET_LOC = BASE_DIR.parent / "data/Question_Classification_Dataset.csv"
-TEST_SIZE = 0.2
+INPUT_DATASET_LOC = BASE_DIR.parent / "data/transformed_df.csv"
+TEST_SIZE = 0.3
 
 
 # set environment variables
@@ -17,4 +17,4 @@ def set_env_vars():
             if not env_var.startswith("#") and env_var.strip()
         ]
         for env_key, env_val in env_vars:
-            os.environ[env_key] = 
+            os.environ[env_key] = env_val
