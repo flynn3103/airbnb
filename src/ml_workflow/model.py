@@ -8,11 +8,9 @@ from sklearn.model_selection import cross_val_score
 from sklearn.ensemble import RandomForestRegressor 
 
 from src.utils.config import set_env_vars
-from sqlalchemy import null
 
 # setting env vars for minio artifact storage
 set_env_vars()
-
 
 mlflow.set_tracking_uri(os.getenv("MLFLOW_TRACKING_URI"))
 
@@ -30,25 +28,48 @@ def eval_metrics(actual, pred):
     r2 = r2_score(actual, pred)
     return rmse, mae, r2
 
+def eval_cross_validation(model, train, test, k):
+    rmse = (-cross_val_score(model, train, test, cv=k, scoring='neg_root_mean_squared_error'))
+    mae = (-cross_val_score(model, train, test, cv=k, scoring='neg_mean_absolute_error'))
+    r2 = cross_val_score(model, train, test, cv=k, scoring='r2')
+    return rmse, mae, r2
+
+def fetch_logged_data(run_id):
+    client = mlflow.tracking.MlflowClient()
+    data = client.get_run(run_id).data
+    tags = {k: v for k, v in data.tags.items() if not k.startswith("mlflow.")}
+    artifacts = [f.path for f in client.list_artifacts(run_id, "model")]
+    return data.params, data.metrics, tags, artifacts
 
 def train_and_validate_reg(
     X_train: np.array, X_test: np.array, 
     y_train: np.array, 
     y_test: np.array):
     mlflow.set_experiment(os.getenv("MLFLOW_EXPERIMENT_NAME"))
-    with mlflow.start_run(run_name="RANDOM_FOREST_REGRESSOR"):
+    # enable autologging
+    mlflow.sklearn.autolog()
+    with mlflow.start_run(run_name="RANDOM_FOREST_REGRESSOR") as run:
         forest_reg = RandomForestRegressor()
         mlflow.log_param("max_features", forest_reg.get_params()["max_features"])
         forest_reg.fit(X_train, y_train)
-        
-        # Evaluate on cross validation
-        r2_cv_scores = (cross_val_score(forest_reg, X_train, y_train, cv=5, scoring='r2'))
+
+        # Evaluate on Train Set
+        y_train_pred = forest_reg.predict(X_train)
+        (train_rmse, train_mae, train_r2) = eval_metrics(y_train, y_train_pred)
         print("---------------------------------------------------------")
-        print("  R2 on Cross Validation: %s" % r2_cv_scores.mean())
+        print("  RMSE on Train Set: %s" % train_rmse)
+        print("  MAE on Train Set: %s" % train_mae)
+        print("  R2 on Train Set: %s" % train_r2)
 
-        mlflow.log_metric("r2_cv", r2_cv_scores.mean())
+        # Evaluate on cross validation
+        (cv_rmse, cv_mae, cv_r2) = eval_cross_validation(forest_reg, X_train, y_train, k=5)
 
-        # Evaluate on Test set
+        print("---------------------------------------------------------")
+        print("  RMSE on Cross Validation: %s" % cv_rmse.mean())
+        print("  MAE on Cross Validation: %s" % cv_mae.mean())
+        print("  R2 on Cross Validation: %s" % cv_r2.mean())
+
+        # # Evaluate on Test set
         y_test_pred = forest_reg.predict(X_test)
         (test_rmse, test_mae, test_r2) = eval_metrics(y_test, y_test_pred)
         print("---------------------------------------------------------")
@@ -56,13 +77,11 @@ def train_and_validate_reg(
         print("  MAE on Test Set: %s" % test_mae)
         print("  R2 on Test Set: %s" % test_r2)
 
-        
-        mlflow.log_metric("rmse_test", test_rmse)
-        mlflow.log_metric("r2_test", test_r2)
-        mlflow.log_metric("mae_test", test_mae)
-
         mlflow.sklearn.log_model(
             sk_model=forest_reg,
             artifact_path="random-forest-model",
             registered_model_name="sk-learn-random-forest-reg-model",
         )
+    # fetch logged data
+    params, metrics, tags, artifacts = fetch_logged_data(run.info.run_id)
+    return params, metrics, tags, artifacts

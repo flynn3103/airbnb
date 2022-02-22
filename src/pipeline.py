@@ -6,6 +6,9 @@ from src.utils.config import BASE_DIR, INPUT_DATASET_LOC
 from src.data_processing import dataloaders, standarization, transform
 from src.ml_workflow import model, train_test
 
+
+
+
 @solid(
     output_defs=[
         OutputDefinition(name="dataset", is_required=True)
@@ -60,9 +63,25 @@ def train_test_split(context, X, y):
     yield Output(y_train, "y_train")
     yield Output(y_test, "y_test")
 
-@solid
+@solid(
+    output_defs=[
+        OutputDefinition(name="params", is_required=True),
+        OutputDefinition(name="metrics", is_required=True),
+        OutputDefinition(name="tags", is_required=True),
+        OutputDefinition(name="artifacts", is_required=True),
+    ]
+)
 def train_regression_model(context, X_train, X_test, y_train, y_test) -> None:
-    model.train_and_validate_reg(X_train, X_test, y_train, y_test)
+    params, metrics, tags, artifacts = model.train_and_validate_reg(X_train, X_test, y_train, y_test)
+    context.log.info(f"Parameters: {params}")
+    context.log.info(f"Metrics: {metrics}")
+    context.log.info(f"Tags name: {tags}")
+    context.log.info(f"Artifacts: {artifacts}")
+
+    yield Output(params, "params")
+    yield Output(metrics, "metrics")
+    yield Output(tags, "tags")
+    yield Output(artifacts, "artifacts")
 
 @pipeline
 def ml_pipeline():
