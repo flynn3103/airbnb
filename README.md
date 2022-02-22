@@ -1,5 +1,5 @@
 # Project Report: Predictive Price Modeling for Airbnb listings
-A project based on Data pipelines, ML workflow management, API endpoints and Monitoring
+A project based on Data pipelines, ML workflow management and Monitoring
 
 ## Project Goals and Objectives
 
@@ -93,28 +93,41 @@ The dataset has a large number of features which can be categorised into followi
     - *Booking Availability:* Availability 30, Availability 60, Availability 90, Availability 365
     - *Reviews related:* Number of Reviews, Reviews per Month, Review Scores Rating, Review Scores Accuracy, Review Scores Cleanliness, Review Scores Checkin, Review Scores Communication, Review Scores Location, Review Scores Value
     - *Host related:* Host Since, Host Response Time, Host Response Rate, Calculated host listings count, Host Since Days, Host Has Profile Pic, Host Identity Verified, Instant Bookable, Host Is Superhost
-    - *Amenities:* TV, Wireless Internet, Kitchen, Heating, Family/kid friendly, Washer, Smoke detector, Fire extinguisher, Essentials, Cable TV, Internet, Dryer, First aid kit, Safety card, Shampoo, Hangers, Laptop friendly workspace, Air conditioning, Breakfast, Free parking on premises, Elevator in building, Buzzer/wireless intercom, Hair dryer, Private living room, Iron, Wheelchair accessible, Hot tub, Carbon monoxide detector, 24-hour check-in, Pets live on this property, Dog(s), Gym, Lock on bedroom door, Private entrance, Indoor fireplace, Smoking allowed, Pets allowed, Cat(s), Self Check-In, Doorman Entry, Suitable for events, Pool, Lockbox, Bathtub, Room-darkening shades, Game console, Doorman, High chair, Pack ’n Play/travel crib, Keypad, Other pet(s), Smartlock
+    - *Amenities:* TV, Wireless Internet, Kitchen, Heating, Family/kid friendly, Washer, Smoke detector, Fire extinguisher, Essentials, Cable TV, Internet, Dryer, First aid kit, Safety card, Shampoo, Hangers,...
 
 The price of the listing will serve as labels for the regression task. The goal of this project would be to predict these price of the listings.
 
 ## EDA 
 
 ### *Question 1: how long have hosts been listing properties on Airbnb in Amsterdam?*
+<img src="docs/images/host_join_airbnb_time_series.png" width="900" height="350">
 
-### *Question 2: how have nightly prices changed over time?*
+### *Question 2: what is the overall distribution of prices for ?*
+<img src="docs/images/price_distribution.png" width="900" height="450">
 
-### *Question 3: which areas have the most Airbnb properties, and which are the most expensive?* 
+### *Question 3: how have nightly prices changed over time?*
+<img src="docs/images/nightly_price.png" width="900" height="350">
 
 ### *Question 4: what are the most common property and room types?*
+<img src="docs/images/property_type.png" width="600" height="350">
+
+<img src="docs/images/room_type.png" width="600" height="350">
 
 ### *Question 5: what is the distribution of reviews like?*
+<img src="docs/images/listing_rate.png" width="600" height="350">
 
 ### *Question 6: Search factors affecting the rise in prices*
-
+<img src="docs/images/shap.png" width="600" height="350">
+<br>
+<img src="docs/images/mae.png" width="800" height="450">
+<br>
+<img src="docs/images/r2.png" width="800" height="450">
+<br>
+<img src="docs/images/feature_importance.png" width="800" height="750">
 
 ## Data Warehouse for Analysis
 
 
 ## Machine Learning Pipeline
 
-<img src="docs/images/mlpipeline.png" width="1000" height="500">
+<img src="docs/images/mlpipeline.png" width="900" height="450">
