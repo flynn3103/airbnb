@@ -1,0 +1,15 @@
+http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2021-03-04/data/listings.csv.gz
+http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2021-06-03/data/listings.csv.gz
+http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2021-09-07/data/listings.csv.gz
+http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2021-12-05/data/listings.csv.gz
+
+http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2021-03-04/data/calendar.csv.gz
+http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2021-06-03/data/calendar.csv.gz
+http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2021-09-07/data/calendar.csv.gz
+http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2021-12-05/data/calendar.csv.gz
+
+http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2021-03-04/data/reviews.csv.gz
+http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2021-06-03/data/reviews.csv.gz
+http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2021-09-07/data/reviews.csv.gz
+http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2021-12-05/data/reviews.csv.gz
+

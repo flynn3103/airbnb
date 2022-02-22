@@ -36,45 +36,33 @@ def train_and_validate_reg(
     y_train: np.array, 
     y_test: np.array):
     mlflow.set_experiment(os.getenv("MLFLOW_EXPERIMENT_NAME"))
-    with mlflow.start_run(run_name="RANDOM_FOREST_REGRESSIOR"):
-        pass
-        # forest_reg = RandomForestRegressor()
-        # #mlflow.log_param("max_features", forest_reg.get_params()["max_features"])
-        # forest_reg.fit(X_train, y_train)
+    with mlflow.start_run(run_name="RANDOM_FOREST_REGRESSOR"):
+        forest_reg = RandomForestRegressor()
+        mlflow.log_param("max_features", forest_reg.get_params()["max_features"])
+        forest_reg.fit(X_train, y_train)
         
-        # # Evaluate on Training Set
-        # y_train_pred = forest_reg.predict(X_train)
-        # (train_rmse, train_mae, train_r2) = eval_metrics(y_train, y_train_pred)
-        # print("  RMSE on Train Set: %s" % train_rmse)
-        # print("  MAE on Train Set: %s" % train_mae)
-        # print("  R2 on Train Set: %s" % train_r2)
+        # Evaluate on cross validation
+        r2_cv_scores = (cross_val_score(forest_reg, X_train, y_train, cv=5, scoring='r2'))
+        print("---------------------------------------------------------")
+        print("  R2 on Cross Validation: %s" % r2_cv_scores.mean())
 
-        # mlflow.log_metric("rmse_train", train_rmse)
-        # mlflow.log_metric("r2_train", train_r2)
-        # mlflow.log_metric("mae_train", train_mae)
+        mlflow.log_metric("r2_cv", r2_cv_scores.mean())
 
-        # # Evaluate on cross validation
-        # r2_cv_scores = (cross_val_score(forest_reg, X_train, y_train, cv=5, scoring='r2'))
-        # print("---------------------------------------------------------")
-        # print("  R2 on Cross Validation: %s" % r2_cv_scores.mean())
-
-        # mlflow.log_metric("r2_cv", test_r2)
-
-        # # Evaluate on Test set
-        # y_test_pred = forest_reg.predict(X_test)
-        # (test_rmse, test_mae, test_r2) = eval_metrics(y_test, y_test_pred)
-        # print("---------------------------------------------------------")
-        # print("  RMSE on Test Set: %s" % test_rmse)
-        # print("  MAE on Test Set: %s" % test_mae)
-        # print("  R2 on Test Set: %s" % test_r2)
+        # Evaluate on Test set
+        y_test_pred = forest_reg.predict(X_test)
+        (test_rmse, test_mae, test_r2) = eval_metrics(y_test, y_test_pred)
+        print("---------------------------------------------------------")
+        print("  RMSE on Test Set: %s" % test_rmse)
+        print("  MAE on Test Set: %s" % test_mae)
+        print("  R2 on Test Set: %s" % test_r2)
 
         
-        # mlflow.log_metric("rmse_test", test_rmse)
-        # mlflow.log_metric("r2_test", test_r2)
-        # mlflow.log_metric("mae_test", test_mae)
+        mlflow.log_metric("rmse_test", test_rmse)
+        mlflow.log_metric("r2_test", test_r2)
+        mlflow.log_metric("mae_test", test_mae)
 
-        # mlflow.sklearn.log_model(
-        #     sk_model=forest_reg,
-        #     artifact_path="random-forest-model",
-        #     registered_model_name="sk-learn-random-forest-reg-model",
-        # )
+        mlflow.sklearn.log_model(
+            sk_model=forest_reg,
+            artifact_path="random-forest-model",
+            registered_model_name="sk-learn-random-forest-reg-model",
+        )

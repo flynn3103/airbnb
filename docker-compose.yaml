@@ -33,7 +33,7 @@ services:
         container_name: workflow
         ports:
             - "3000:3000"
-        command: dagit -f mlops/pipeline.py --host 0.0.0.0
+        command: dagit -f src/pipeline.py --host 0.0.0.0
         depends_on:
             - mlflow
             - minio
