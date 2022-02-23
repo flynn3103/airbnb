@@ -26,7 +26,8 @@ We will be using the following tools in this project
 - ML Pipeline: <a href="https://github.com/dagster-io/dagster"> Dagster </a>
 - ML registry:  <a href="https://github.com/mlflow/mlflow"> MLflow </a>
 - Artifact Storage:<a href="https://github.com/minio/minio"> MinIO </a>
-
+- Data Warhouse: <a href="https://www.postgresql.org/"> PostgreSQL </a> and <a href="https://github.com/sosedoff/pgweb">pgweb</a> for sql queries
+- 
 ## How to run ??
 
 **Poetry**
@@ -109,24 +110,28 @@ The price of the listing will serve as labels for the regression task. The goal 
 <img src="docs/images/nightly_price.png" width="900" height="350">
 
 ### *Question 4: what are the most common property and room types?*
-<img src="docs/images/property_type.png" width="600" height="350">
+<img src="docs/images/property_type.png" width="500" height="350">
 
-<img src="docs/images/room_type.png" width="600" height="350">
+<img src="docs/images/room_type.png" width="500" height="350">
 
 ### *Question 5: what is the distribution of reviews like?*
 <img src="docs/images/listing_rate.png" width="600" height="350">
 
 ### *Question 6: Search factors affecting the rise in prices*
+<img src="docs/images/power_transform.png" width="500" height="450">
+<img src="docs/images/after_power_transform.png" width="500" height="450">
+<br>
+<img src="docs/images/mae.png" width="900" height="500">
+<br>
+<img src="docs/images/r2.png" width="900" height="500">
+<br>
 <img src="docs/images/shap.png" width="600" height="350">
 <br>
-<img src="docs/images/mae.png" width="800" height="450">
-<br>
-<img src="docs/images/r2.png" width="800" height="450">
-<br>
-<img src="docs/images/feature_importance.png" width="800" height="750">
+<img src="docs/images/feature_importance.png" width="600" height="750">
 
 ## Data Warehouse for Analysis
 
+<img src="docs/images/star_schema.png" width="900" height="550">
 
 ## Machine Learning Pipeline
 

@@ -3,12 +3,12 @@ from sql_queries import create_table_queries, drop_table_queries
 
 def create_database():
     """
-    - Creates and connects to the sparkifydb
-    - Returns the connection and cursor to sparkifydb
+    - Creates and connects to the airbnbdb
+    - Returns the connection and cursor to airbnbdb
     """    
     # connect to default database
     conn = psycopg2.connect(
-        "host=127.0.0.1 dbname=airbnb user=airbnb password=airbnb")
+        "host=172.21.0.2 dbname=airbnb user=airbnb password=airbnb")
     conn.set_session(autocommit=True)
     cur = conn.cursor()
     
@@ -19,9 +19,9 @@ def create_database():
     # close connection to default database
     conn.close()    
     
-    # connect to airbnb database
+    # connect to airbnbdb database 
     conn = psycopg2.connect(
-        "host=127.0.0.1 dbname=airbnbdb user=airbnb password=airbnb")
+        "host=172.21.0.2 dbname=airbnbdb user=airbnb password=airbnb")
     cur = conn.cursor()
     
     return cur, conn
@@ -54,7 +54,7 @@ def init_database_and_tables():
     """
     cur, conn = create_database()
 
-    drop_tables(cur, conn)
+    drop_tables(cur, conn)  
     create_tables(cur, conn)
 
     conn.close()

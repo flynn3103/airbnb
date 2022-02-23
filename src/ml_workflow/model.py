@@ -28,10 +28,10 @@ def eval_metrics(actual, pred):
     r2 = r2_score(actual, pred)
     return rmse, mae, r2
 
-def eval_cross_validation(model, train, test, k):
-    rmse = (-cross_val_score(model, train, test, cv=k, scoring='neg_root_mean_squared_error'))
-    mae = (-cross_val_score(model, train, test, cv=k, scoring='neg_mean_absolute_error'))
-    r2 = cross_val_score(model, train, test, cv=k, scoring='r2')
+def eval_cross_validation(model, X, y, k):
+    rmse = (-cross_val_score(model, X, y, cv=k, scoring='neg_root_mean_squared_error'))
+    mae = (-cross_val_score(model, X, y, cv=k, scoring='neg_mean_absolute_error'))
+    r2 = cross_val_score(model, X, y, cv=k, scoring='r2')
     return rmse, mae, r2
 
 def fetch_logged_data(run_id):
