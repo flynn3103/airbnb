@@ -26,22 +26,26 @@ calendar_create = ("""
 
 listings_create = ("""
     CREATE TABLE IF NOT EXISTS listings(
-        id PRIMARY KEY,
+        id int PRIMARY KEY,
         name varchar,
         room_type varchar,
         number_of_reviews int,
+        review_scores_rating numeric,
+        review_scores_value numeric,
         host_id int,
         host_name varchar,
-        host_is_superhost char (1),
+        host_is_superhost varchar,
         host_listings_count numeric,
         neighbourhood varchar,
         property_type varchar,
         accommodates int,
         availability_30 int,
         bedrooms numeric,
+        beds numeric,
         price numeric,
         minimum_nights int,
-        maximum_nights int
+        maximum_nights int,
+        bathrooms numeric
     )
 """)
 
@@ -63,39 +67,39 @@ time_create = ("""
     )
 """)
 
-# INSERT RECORDS
-review_insert = ("""
-    INSERT INTO review 
-    (listings_id, review_id, date_time, comment)
-    VALUES (%s, %s, %s, %s)
-""")
+# # INSERT RECORDS
+# review_insert = ("""
+#     INSERT INTO review 
+#     (listings_id, review_id, date_time, comment)
+#     VALUES (%s, %s, %s, %s)
+# """)
 
-calendar_insert = ("""
-    INSERT INTO calendar 
-    (listing_id, date_time, available, price)
-    VALUES (%s, %s, %s, %s)
-""")
+# calendar_insert = ("""
+#     INSERT INTO calendar 
+#     (listing_id, date_time, available, price)
+#     VALUES (%s, %s, %s, %s)
+# """)
 
-listings_insert = ("""
-    INSERT INTO listings 
-    (listing_id, name, room_type, number_of_reviews, host_id, host_name, host_is_superhost, host_listings_count, neighbourhood, property_type, accommodates, availability_30, bedrooms, price, minimum_nights, maximum_nights)
-    VALUES (%s, %s, %s, %s, %s, %s)
-    ON CONFLICT (listing_id) DO NOTHING
-""")
+# listings_insert = ("""
+#     INSERT INTO listings 
+#     (listing_id, name, room_type, number_of_reviews, host_id, host_name, host_is_superhost, host_listings_count, neighbourhood, property_type, accommodates, availability_30, bedrooms, price, minimum_nights, maximum_nights)
+#     VALUES (%s, %s, %s, %s, %s, %s)
+#     ON CONFLICT (listing_id) DO NOTHING
+# """)
 
-reviewer_insert = ("""
-    INSERT INTO reviewer 
-    (reviewer_id, reviewer_name)
-    VALUES (%s, %s)
-    ON CONFLICT (review_id) DO NOTHING
-""")
+# reviewer_insert = ("""
+#     INSERT INTO reviewer 
+#     (reviewer_id, reviewer_name)
+#     VALUES (%s, %s)
+#     ON CONFLICT (review_id) DO NOTHING
+# """)
 
-time_insert = ("""
-    INSERT INTO time 
-    (date_time, day, month, year, week, dayofweek)
-    VALUES (%s, %s, %s, %s, %s, %s)
-    ON CONFLICT (date_time) DO NOTHING
-""")
+# time_insert = ("""
+#     INSERT INTO time 
+#     (date_time, day, month, year, week, dayofweek)
+#     VALUES (%s, %s, %s, %s, %s, %s)
+#     ON CONFLICT (date_time) DO NOTHING
+# """)
 
 
 # CHECK RECORDS
