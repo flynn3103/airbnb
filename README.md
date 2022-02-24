@@ -20,6 +20,54 @@ The project involved the following steps,
 
 <img src="docs/images/workflow.png" width="850" height="500">
 
+## About Dataset
+
+The Dataset used in this project was obtained from http://insideairbnb.com/get-the-data.html. There are a total of  records each of which contains details of one Airbnb listing from March to December 2021 with 56846 records
+
+The dataset has a large number of features which can be categorised into following types,
+- *Calendar data:* including listing id and the price and availability for that day
+- *Reviews:* including unique id for each reviewer and detailed comments
+- *Listings:* including full descriptions and average review score for each listing
+    - *Location related:* Longitude, Latitude, Neighbourhood, Host Location
+    - *Property related:* Property Type, Room Type, Accommodates, Bedrooms, Beds, Bed Type, Minimum Nights
+    - *Booking Availability:* Availability 30, Availability 60, Availability 90, Availability 365
+    - *Reviews related:* Number of Reviews, Reviews per Month, Review Scores Rating, Review Scores Accuracy, Review Scores Cleanliness, Review Scores Checkin, Review Scores Communication, Review Scores Location, Review Scores Value
+    - *Host related:* Host Since, Host Response Time, Host Response Rate, Calculated host listings count, Host Since Days, Host Has Profile Pic, Host Identity Verified, Instant Bookable, Host Is Superhost
+    - *Amenities:* TV, Wireless Internet, Kitchen, Heating, Family/kid friendly, Washer, Smoke detector, Fire extinguisher, Essentials, Cable TV, Internet, Dryer, First aid kit, Safety card, Shampoo, Hangers,...
+
+The price of the listing will serve as labels for the regression task. The goal of this project would be to predict these price of the listings.
+
+## EDA 
+
+### *Question 1: how long have hosts been listing properties on Airbnb in Amsterdam?*
+<img src="docs/images/host_join_airbnb_time_series.png" width="900" height="350">
+
+### *Question 2: what is the overall distribution of prices for ?*
+<img src="docs/images/price_distribution.png" width="900" height="450">
+
+### *Question 3: how have nightly prices changed over time?*
+<img src="docs/images/nightly_price.png" width="900" height="350">
+
+### *Question 4: what are the most common property and room types?*
+<img src="docs/images/property_type.png" width="500" height="350">
+
+<img src="docs/images/room_type.png" width="500" height="350">
+
+### *Question 5: what is the distribution of reviews like?*
+<img src="docs/images/listing_rate.png" width="600" height="350">
+
+### *Question 6: Search factors affecting the rise in prices*
+<img src="docs/images/power_transform.png" width="500" height="450">
+<img src="docs/images/after_power_transform.png" width="500" height="450">
+<br>
+<img src="docs/images/mae.png" width="900" height="500">
+<br>
+<img src="docs/images/r2.png" width="900" height="500">
+<br>
+<img src="docs/images/shap.png" width="600" height="350">
+<br>
+<img src="docs/images/feature_importance.png" width="600" height="750">
+
 ## Stack
 We will be using the following tools in this project
 
@@ -81,53 +129,6 @@ $ docker-compose -f docker-compose-postgres.yaml up
 ```
 You should be able to view the UI at http://localhost:8081
 
-## About Dataset
-
-The Dataset used in this project was obtained from http://insideairbnb.com/get-the-data.html. There are a total of  records each of which contains details of one Airbnb listing from March to December 2021 with 56846 records
-
-The dataset has a large number of features which can be categorised into following types,
-- *Calendar data:* including listing id and the price and availability for that day
-- *Reviews:* including unique id for each reviewer and detailed comments
-- *Listings:* including full descriptions and average review score for each listing
-    - *Location related:* Longitude, Latitude, Neighbourhood, Host Location
-    - *Property related:* Property Type, Room Type, Accommodates, Bedrooms, Beds, Bed Type, Minimum Nights
-    - *Booking Availability:* Availability 30, Availability 60, Availability 90, Availability 365
-    - *Reviews related:* Number of Reviews, Reviews per Month, Review Scores Rating, Review Scores Accuracy, Review Scores Cleanliness, Review Scores Checkin, Review Scores Communication, Review Scores Location, Review Scores Value
-    - *Host related:* Host Since, Host Response Time, Host Response Rate, Calculated host listings count, Host Since Days, Host Has Profile Pic, Host Identity Verified, Instant Bookable, Host Is Superhost
-    - *Amenities:* TV, Wireless Internet, Kitchen, Heating, Family/kid friendly, Washer, Smoke detector, Fire extinguisher, Essentials, Cable TV, Internet, Dryer, First aid kit, Safety card, Shampoo, Hangers,...
-
-The price of the listing will serve as labels for the regression task. The goal of this project would be to predict these price of the listings.
-
-## EDA 
-
-### *Question 1: how long have hosts been listing properties on Airbnb in Amsterdam?*
-<img src="docs/images/host_join_airbnb_time_series.png" width="900" height="350">
-
-### *Question 2: what is the overall distribution of prices for ?*
-<img src="docs/images/price_distribution.png" width="900" height="450">
-
-### *Question 3: how have nightly prices changed over time?*
-<img src="docs/images/nightly_price.png" width="900" height="350">
-
-### *Question 4: what are the most common property and room types?*
-<img src="docs/images/property_type.png" width="500" height="350">
-
-<img src="docs/images/room_type.png" width="500" height="350">
-
-### *Question 5: what is the distribution of reviews like?*
-<img src="docs/images/listing_rate.png" width="600" height="350">
-
-### *Question 6: Search factors affecting the rise in prices*
-<img src="docs/images/power_transform.png" width="500" height="450">
-<img src="docs/images/after_power_transform.png" width="500" height="450">
-<br>
-<img src="docs/images/mae.png" width="900" height="500">
-<br>
-<img src="docs/images/r2.png" width="900" height="500">
-<br>
-<img src="docs/images/shap.png" width="600" height="350">
-<br>
-<img src="docs/images/feature_importance.png" width="600" height="750">
 
 ## Data Warehouse for Analysis
 
