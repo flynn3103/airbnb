@@ -38,6 +38,7 @@ The dataset has a large number of features which can be categorised into followi
 The price of the listing will serve as labels for the regression task. The goal of this project would be to predict these price of the listings.
 
 ## EDA 
+https://colab.research.google.com/drive/1x48-dPbLtU1PNj_1R0FXZsuTVNBdzLHa?usp=sharing
 
 ### *Question 1: how long have hosts been listing properties on Airbnb in Amsterdam?*
 <img src="docs/images/host_join_airbnb_time_series.png" width="900" height="350">
@@ -57,6 +58,9 @@ The price of the listing will serve as labels for the regression task. The goal 
 <img src="docs/images/listing_rate.png" width="600" height="350">
 
 ### *Question 6: Search factors affecting the rise in prices*
+
+https://colab.research.google.com/drive/1k7y9nCmf-5bMBWUeCt-et_-RGFVf_Wpy?usp=sharing
+
 <img src="docs/images/power_transform.png" width="500" height="450">
 <img src="docs/images/after_power_transform.png" width="500" height="450">
 <br>
