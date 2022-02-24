@@ -42,7 +42,7 @@ $ poetry export -f requirements.txt --output requirements.txt
 
 ```
 $ poetry install
-$ pip install -r requirements
+$ pip install -r requirements.txt
 ```
 
 **MLflow**
@@ -74,7 +74,7 @@ $ minio server minio_data --console-address ":9001"
 $ poetry shell
 $ dagit -f src/pipeline.py
 ```
-You should be able to view the UI at http://localhost:3000
+
 **Postgres**
 ```
 $ docker-compose -f docker-compose-postgres.yaml up
@@ -135,8 +135,17 @@ The price of the listing will serve as labels for the regression task. The goal 
 
 **Query data after ETL from csv file to sql**
 
-<img src="docs/images/queries.png" width="1000" height="500">
+<img src="docs/images/queries.png" width="950" height="400">
 
 ## Machine Learning Pipeline
+**Dagster**
 
 <img src="docs/images/mlpipeline.png" width="900" height="450">
+
+**Mlflow**
+
+<img src="docs/images/mlflow.png" width="900" height="450">
+
+**MinIO**
+
+<img src="docs/images/minio.png" width="1000" height="350">
