@@ -9,10 +9,10 @@ def get_transform(data: List[str]):
     pt = PowerTransformer(method='yeo-johnson')
 
     numerical_columns = ['accommodates', 'bathrooms', 
-                     'bedrooms','beds',
+                     'bedrooms',
                      'host_listings_count',
                      'maximum_nights', 'minimum_nights',                  
-                     'number_of_reviews', 'price']
+                     'number_of_reviews','price']
 
     for col in numerical_columns:
         data[col] = data[col].astype('float64')

@@ -64,8 +64,6 @@ The price of the listing will serve as labels for the regression task. The goal 
 <br>
 <img src="docs/images/r2.png" width="900" height="500">
 <br>
-<img src="docs/images/shap.png" width="600" height="350">
-<br>
 <img src="docs/images/feature_importance.png" width="600" height="750">
 
 ## Stack
