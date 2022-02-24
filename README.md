@@ -1,5 +1,5 @@
 # Project Report: Predictive Price Modeling for Airbnb listings
-A project based on Data pipelines, ML workflow management and Monitoring
+A project based on ETL pipelines, ML workflow management and Monitoring
 
 ## Project Goals and Objectives
 
@@ -27,7 +27,7 @@ We will be using the following tools in this project
 - ML registry:  <a href="https://github.com/mlflow/mlflow"> MLflow </a>
 - Artifact Storage:<a href="https://github.com/minio/minio"> MinIO </a>
 - Data Warhouse: <a href="https://www.postgresql.org/"> PostgreSQL </a> and <a href="https://github.com/sosedoff/pgweb">pgweb</a> for sql queries
-- 
+
 ## How to run ??
 
 **Poetry**
@@ -132,6 +132,10 @@ The price of the listing will serve as labels for the regression task. The goal 
 ## Data Warehouse for Analysis
 
 <img src="docs/images/star_schema.png" width="900" height="550">
+
+**Query data after ETL from csv file to sql**
+
+<img src="docs/images/queries.png" width="1000" height="500">
 
 ## Machine Learning Pipeline
 

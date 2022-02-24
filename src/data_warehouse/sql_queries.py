@@ -8,10 +8,10 @@ time_drop = "DROP TABLE IF EXISTS dim_date"
 # CREATE TABLES
 review_create = ("""
     CREATE TABLE IF NOT EXISTS review (
-        listings_id int,
-        review_id int,
+        listing_id BIGINT,
+        review_id BIGINT,
         date timestamp,
-        comment varchar
+        comments varchar
     )
 """)
 
