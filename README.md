@@ -6,9 +6,7 @@ A project based on ETL pipelines, ML workflow management and Monitoring
 **The Problem:** Currently there is no convenient way for a new Airbnb host to decide the price of his or her listing. New hosts must often rely on the price of neighbouring listings when deciding on the price of their own listing.
 
 **The Solution:** 
-- A Predictive Price Modelling tool whereby a new host can enter all the relevant details such as location of the listing, listing properties, available amenities etc.
-- A Data Warehouse for review analyzing 
-- A 
+- A Predictive Price Modelling tool whereby a new host can enter all the relevant details such as location of the listing, listing properties, available amenities etc. Futhermore, I'll build a solution to automate ml workflow, tracking parameter and gathering data to data warehouse.
 
 ## Project Overview
 
