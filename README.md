@@ -125,8 +125,6 @@ https://colab.research.google.com/drive/1x48-dPbLtU1PNj_1R0FXZsuTVNBdzLHa?usp=sh
 
 https://colab.research.google.com/drive/1k7y9nCmf-5bMBWUeCt-et_-RGFVf_Wpy?usp=sharing
 
-<img src="docs/images/power_transform.png" width="500" height="450">
-<img src="docs/images/after_power_transform.png" width="500" height="450">
 <br>
 <img src="docs/images/mae.png" width="900" height="500">
 <br>
